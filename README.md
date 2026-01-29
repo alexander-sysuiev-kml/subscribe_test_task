@@ -4,6 +4,7 @@
 - No parsing logic is required to identify the entity type (food, perfume, medical) or whether it is imported. If pattern matching is required, it could be added to InputService.
 - I considered avoiding a decorator for LineItem, but it could lead to internal recursion in tax calculation. So placing the DAO with the decorator seems like the canonical approach in this case.
 - I spent some time understanding that there should be `round UP to the nearest` to just `round to the nearest`
+- As to example results, I've set tax logic so each item tax rounded separately
 
 ### Requirements
 - Ruby 3.x (or any Ruby version that can run `rspec`)

@@ -51,7 +51,7 @@ module BalanceCalculation
 
     def parse_boolean(value)
       normalized_value = value.to_s.strip.downcase
-      return false if normalized_value.nil? || normalized_value.empty?
+      return false if normalized_value.empty?
       return true if %w[true 1 yes y].include?(normalized_value)
       return false if %w[false 0 no n].include?(normalized_value)
 
