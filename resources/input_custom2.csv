@@ -1,0 +1,5 @@
+name,quantity,price,type,imported
+imported bottle of perfume,1,47.50,perfume,true
+imported box of chocolates,2,10.00,food,true
+imported headache pills,1,9.75,medical,true
+music CD,1,14.99,music,false

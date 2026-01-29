@@ -1,0 +1,4 @@
+name,quantity,price,type,imported
+laptop,2,999.99,electronics,false
+book,3,12.49,book,false
+chocolate bar,5,0.85,food,false

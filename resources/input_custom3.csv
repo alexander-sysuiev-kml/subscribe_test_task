@@ -1,0 +1,5 @@
+name,quantity,price,type,imported
+imported bottle of perfume,1,11.28,perfume,true
+bottle of perfume,1,18.99,perfume,false
+imported bottle of perfume,2,27.99,perfume,true
+chocolate bar,2,0.99,food,false
