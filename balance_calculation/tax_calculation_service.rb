@@ -14,14 +14,14 @@ module BalanceCalculation
     end
 
     def call
-      round_tax(tax_rate * line_item.full_price)
+      round_tax(tax_rate * line_item.price) * line_item.quantity
     end
 
     private
 
     def round_tax(tax_value)
-      # Nice trick from the internet to round to the nearest 0.05
-      (tax_value * 20).round / 20.0
+      # Nice trick from the internet to round up to the nearest 0.05 (never round down)
+      (tax_value * 20).ceil / 20.0
     end
 
     def tax_rate
