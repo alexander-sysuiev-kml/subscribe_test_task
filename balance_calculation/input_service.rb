@@ -17,7 +17,7 @@ module BalanceCalculation
         LineItem.new(
           name: row["name"],
           quantity: Integer(row["quantity"]),
-          price: Float(row["price"]),
+          price: Float(row["price"]).round(2),
           type: row["type"],
           imported: parse_boolean(row["imported"])
         )
