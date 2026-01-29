@@ -22,18 +22,18 @@ RSpec.describe BalanceCalculation::ReportGenerationService do
     )
   end
   let(:entities) { [entity1, entity2] }
-  let(:expected_output) do
-    <<~OUTPUT
-      1 book: 12.49
-      1 music CD: 16.49
-      Sales Taxes: 1.5
-      Total: 28.98
-    OUTPUT
+  let(:expected_report) do
+    [
+      { type: :item, quantity: 1, name: "book", price_with_tax: 12.49 },
+      { type: :item, quantity: 1, name: "music CD", price_with_tax: 16.49 },
+      { type: :sales_taxes, amount: 1.5 },
+      { type: :total, amount: 28.98 }
+    ]
   end
 
-  it "prints line items and totals based on taxes" do
-    described_class.call(entities)
+  it "returns line items and totals based on taxes" do
+    report = described_class.call(entities)
 
-    expect($stdout.string).to eq(expected_output)
+    expect(report).to eq(expected_report)
   end
 end

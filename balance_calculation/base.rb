@@ -1,5 +1,6 @@
 require_relative "./input_service"
 require_relative "./report_generation_service"
+require_relative "./output_service"
 
 module BalanceCalculation
   class Base
@@ -9,7 +10,8 @@ module BalanceCalculation
       input_service = InputService.new(file_path)
       line_items = input_service.call
 
-      ReportGenerationService.call(line_items)
+      report = ReportGenerationService.call(line_items)
+      OutputService.call(report)
     end
   end
 end
