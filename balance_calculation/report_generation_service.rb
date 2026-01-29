@@ -1,4 +1,4 @@
-require_relative "./decorated_entity"
+require_relative "./taxed_line_item"
 
 module BalanceCalculation
   class ReportGenerationService
@@ -14,11 +14,11 @@ module BalanceCalculation
       total_tax = 0
       total_sum = 0
       line_items.each do |line_item|
-        decorated_entity = DecoratedEntity.new(line_item)
-        total_tax += decorated_entity.tax_amount
-        total_sum += decorated_entity.price_with_tax
+        taxed_line_item = TaxedLineItem.new(line_item)
+        total_tax += taxed_line_item.tax_amount
+        total_sum += taxed_line_item.price_with_tax
 
-        puts "#{decorated_entity.quantity} #{decorated_entity.name}: #{decorated_entity.price_with_tax.round(2)}"
+        puts "#{taxed_line_item.quantity} #{taxed_line_item.name}: #{taxed_line_item.price_with_tax.round(2)}"
       end
 
       puts "Sales Taxes: #{total_tax.round(2)}"

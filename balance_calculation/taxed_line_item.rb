@@ -1,7 +1,7 @@
 require_relative "./tax_calculation_service"
 
 module BalanceCalculation
-  class DecoratedEntity
+  class TaxedLineItem
     attr_reader :line_item
 
     def initialize(line_item)
@@ -17,11 +17,11 @@ module BalanceCalculation
     end
 
     def quantity
-      @quantity ||= line_item.quantity
+      line_item.quantity
     end
 
     def name
-      @name ||= line_item.name
+      line_item.name
     end
   end
 end
