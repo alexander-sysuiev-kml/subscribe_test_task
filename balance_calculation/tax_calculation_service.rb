@@ -1,20 +1,20 @@
 module BalanceCalculation
   class TaxCalculationService
-    attr_reader :stored_entity
+    attr_reader :line_item
     EXEMPT_TYPES = %w[book food medical].freeze
     IMPORT_TAX_RATE = 0.05
     BASE_TAX_RATE = 0.10
 
-    def self.call(stored_entity)
-      new(stored_entity).call
+    def self.call(line_item)
+      new(line_item).call
     end
 
-    def initialize(stored_entity)
-      @stored_entity = stored_entity
+    def initialize(line_item)
+      @line_item = line_item
     end
 
     def call
-      round_tax(tax_rate * stored_entity.full_price)
+      round_tax(tax_rate * line_item.full_price)
     end
 
     private
@@ -26,8 +26,8 @@ module BalanceCalculation
 
     def tax_rate
       base_tax = 0
-      base_tax += BASE_TAX_RATE unless EXEMPT_TYPES.include?(stored_entity.type)
-      base_tax += IMPORT_TAX_RATE if stored_entity.imported
+      base_tax += BASE_TAX_RATE unless EXEMPT_TYPES.include?(line_item.type)
+      base_tax += IMPORT_TAX_RATE if line_item.imported
 
       base_tax
     end

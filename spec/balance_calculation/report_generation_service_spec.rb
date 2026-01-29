@@ -1,10 +1,10 @@
 require "spec_helper"
 require_relative "../../balance_calculation/report_generation_service"
-require_relative "../../balance_calculation/stored_entity"
+require_relative "../../balance_calculation/line_item"
 
 RSpec.describe BalanceCalculation::ReportGenerationService do
   let(:entity1) do
-    BalanceCalculation::StoredEntity.new(
+    BalanceCalculation::LineItem.new(
       name: "book",
       quantity: 1,
       price: 12.49,
@@ -13,7 +13,7 @@ RSpec.describe BalanceCalculation::ReportGenerationService do
     )
   end
   let(:entity2) do
-    BalanceCalculation::StoredEntity.new(
+    BalanceCalculation::LineItem.new(
       name: "music CD",
       quantity: 1,
       price: 14.99,

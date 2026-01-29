@@ -1,7 +1,7 @@
 require_relative "./tax_calculation_service"
 
 module BalanceCalculation
-  class StoredEntity
+  class LineItem
     attr_reader :name, :quantity, :price, :imported, :type
 
     def initialize(name:, quantity:, price:, type:, imported: false)

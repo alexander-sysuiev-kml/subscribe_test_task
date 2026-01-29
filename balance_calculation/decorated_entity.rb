@@ -2,26 +2,26 @@ require_relative "./tax_calculation_service"
 
 module BalanceCalculation
   class DecoratedEntity
-    attr_reader :stored_entity
+    attr_reader :line_item
 
-    def initialize(stored_entity)
-      @stored_entity = stored_entity
+    def initialize(line_item)
+      @line_item = line_item
     end
 
     def price_with_tax
-      @price_with_tax ||= stored_entity.full_price + tax_amount
+      @price_with_tax ||= line_item.full_price + tax_amount
     end
 
     def tax_amount
-      @tax_amount ||= TaxCalculationService.call(stored_entity)
+      @tax_amount ||= TaxCalculationService.call(line_item)
     end
 
     def quantity
-      @quantity ||= stored_entity.quantity
+      @quantity ||= line_item.quantity
     end
 
     def name
-      @name ||= stored_entity.name
+      @name ||= line_item.name
     end
   end
 end

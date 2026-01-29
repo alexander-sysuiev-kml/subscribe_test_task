@@ -7,9 +7,9 @@ module BalanceCalculation
 
     def self.process(file_path = DEFAULT_FILE_PATH)
       input_service = InputService.new(file_path)
-      stored_entities = input_service.call
+      line_items = input_service.call
 
-      ReportGenerationService.call(stored_entities)
+      ReportGenerationService.call(line_items)
     end
   end
 end

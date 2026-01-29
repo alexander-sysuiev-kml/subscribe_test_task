@@ -1,7 +1,7 @@
 require "spec_helper"
-require_relative "../../balance_calculation/stored_entity"
+require_relative "../../balance_calculation/line_item"
 
-RSpec.describe BalanceCalculation::StoredEntity do
+RSpec.describe BalanceCalculation::LineItem do
   let(:attributes) do
     {
       name: "chocolate bar",

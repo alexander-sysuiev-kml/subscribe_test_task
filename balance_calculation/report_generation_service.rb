@@ -2,19 +2,19 @@ require_relative "./decorated_entity"
 
 module BalanceCalculation
   class ReportGenerationService
-    def self.call(stored_entities)
-      new(stored_entities).call
+    def self.call(line_items)
+      new(line_items).call
     end
 
-    def initialize(stored_entities)
-      @stored_entities = stored_entities
+    def initialize(line_items)
+      @line_items = line_items
     end
 
     def call
       total_tax = 0
       total_sum = 0
-      stored_entities.each do |entity|
-        decorated_entity = DecoratedEntity.new(entity)
+      line_items.each do |line_item|
+        decorated_entity = DecoratedEntity.new(line_item)
         total_tax += decorated_entity.tax_amount
         total_sum += decorated_entity.price_with_tax
 
@@ -27,6 +27,6 @@ module BalanceCalculation
 
     private
 
-    attr_reader :stored_entities
+    attr_reader :line_items
   end
 end

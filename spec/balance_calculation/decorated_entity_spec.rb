@@ -1,10 +1,10 @@
 require "spec_helper"
 require_relative "../../balance_calculation/decorated_entity"
-require_relative "../../balance_calculation/stored_entity"
+require_relative "../../balance_calculation/line_item"
 
 RSpec.describe BalanceCalculation::DecoratedEntity do
-  let(:stored_entity) do
-    BalanceCalculation::StoredEntity.new(
+  let(:line_item) do
+    BalanceCalculation::LineItem.new(
       name: "music CD",
       quantity: 1,
       price: 14.99,
@@ -13,8 +13,8 @@ RSpec.describe BalanceCalculation::DecoratedEntity do
     )
   end
 
-  it "exposes stored entity data and calculated tax" do
-    decorated = described_class.new(stored_entity)
+  it "exposes line item data and calculated tax" do
+    decorated = described_class.new(line_item)
 
     expect(decorated.name).to eq("music CD")
     expect(decorated.quantity).to eq(1)

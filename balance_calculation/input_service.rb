@@ -1,4 +1,4 @@
-require_relative "./stored_entity"
+require_relative "./line_item"
 
 module BalanceCalculation
   class InputService
@@ -14,7 +14,7 @@ module BalanceCalculation
 
       rows.map do |row|
         validate_row!(row)
-        StoredEntity.new(
+        LineItem.new(
           name: row["name"],
           quantity: Integer(row["quantity"]),
           price: Float(row["price"]),

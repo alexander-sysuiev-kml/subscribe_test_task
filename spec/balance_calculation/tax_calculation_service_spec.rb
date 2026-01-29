@@ -1,13 +1,13 @@
 require "spec_helper"
 require_relative "../../balance_calculation/tax_calculation_service"
-require_relative "../../balance_calculation/stored_entity"
+require_relative "../../balance_calculation/line_item"
 
 RSpec.describe BalanceCalculation::TaxCalculationService do
   let(:type) { "book" }
   let(:imported) { false }
 
   let(:entity) do
-    BalanceCalculation::StoredEntity.new(
+    BalanceCalculation::LineItem.new(
       name: "book",
       quantity: 1,
       price: 12.49,

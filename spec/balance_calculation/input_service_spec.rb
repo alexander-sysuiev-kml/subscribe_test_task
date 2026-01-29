@@ -18,7 +18,7 @@ RSpec.describe BalanceCalculation::InputService do
       allow(File).to receive(:read).with(file_path).and_return(file_data)
     end
 
-    it "parses csv rows into stored entities" do
+    it "parses csv rows into line items" do
       entities = described_class.new(file_path).call
 
       expect(entities.size).to eq(3)
